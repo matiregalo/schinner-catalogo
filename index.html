@@ -99,7 +99,7 @@ ol.carac .n { flex: 0 0 5mm; height: 5mm; border-radius: 50%; background: #8c939
 </style></head><body>
 
 <div class="bar" id="bar">
-  <div class="estado" id="estado">Leyendo los precios de la planilla…</div>
+  <div class="estado" id="estado">Leyendo los precios de la planilla… puede tardar hasta medio minuto.</div>
   <button id="descargar" disabled>Descargar PDF</button>
 </div>
 <div class="aviso-print">No se pudieron leer los precios de la planilla. Este catálogo no se imprime con precios viejos: volvé a abrir la página y probá de nuevo.</div>
@@ -934,13 +934,26 @@ function fechar() {
   return hoy;
 }
 
+function esperarFotos(alAvanzar) {
+  const fotos = [...document.images];
+  let listas = 0;
+  return Promise.all(fotos.map(i => (i.complete ? Promise.resolve() : new Promise(r => {
+    i.addEventListener("load", r, { once: true });
+    i.addEventListener("error", r, { once: true });
+  })).then(() => alAvanzar(++listas, fotos.length)))).then(() => fotos.filter(i => !i.naturalWidth).length);
+}
+
 async function cargar() {
   const bar = document.getElementById("bar"), estado = document.getElementById("estado"), boton = document.getElementById("descargar");
   const url = new URLSearchParams(location.search).get("csv") || CSV_URL;
   try {
+    let fotosListas = "";
+    const fotos = esperarFotos((n, total) => { fotosListas = n + " de " + total; estado.textContent = "Leyendo los precios de la planilla (puede tardar hasta medio minuto) y cargando las fotos: " + fotosListas; });
     const r = await fetch(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error("la planilla respondió " + r.status);
     const d = leerPlanilla(parseCSV(await r.text()));
+    const rotas = await fotos;
+    if (rotas) throw new Error(rotas + " fotos no cargaron");
     aplicar(d);
     const hoy = fechar();
     const hora = hoy.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" });
@@ -951,7 +964,8 @@ async function cargar() {
   } catch (e) {
     document.body.classList.add("sin-datos");
     bar.classList.add("error");
-    estado.innerHTML = "<b>No pude leer los precios de la planilla</b> (" + e.message + "). No descargues este PDF: los precios pueden estar viejos. Recargá la página en un rato.";
+    const fotosFallaron = /fotos/.test(e.message);
+    estado.innerHTML = (fotosFallaron ? "<b>Faltan fotos</b> (" + e.message + "). " : "<b>No pude leer los precios de la planilla</b> (" + e.message + "). No descargues este PDF: los precios pueden estar viejos. ") + "Recargá la página en un rato.";
     boton.disabled = true;
   }
 }
