@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Schinner - catálogo y precios</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Montserrat, "Segoe UI", Arial, sans-serif; color: #2f2f2f; font-size: 10pt; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; padding: 14mm 14mm 12mm; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; background: #fff; }
+.page:last-of-type { page-break-after: auto; }
+h1, h2, h3 { margin: 0; }
+.green { color: #6fa83a; }
+.cover { justify-content: center; }
+.cover .logo { width: 78mm; margin-bottom: 18mm; }
+.cover h1 { font-size: 30pt; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; }
+.cover .sub { font-size: 13pt; margin-top: 6mm; color: #555; line-height: 1.5; }
+.cover .facts { display: flex; gap: 6mm; margin: 14mm 0; }
+.cover .fact { flex: 1; border-top: 3px solid #6fa83a; padding-top: 3mm; }
+.cover .fact b { display: block; font-size: 24pt; font-weight: 800; }
+.cover .fact span { font-size: 9pt; color: #666; }
+.cover .note { font-size: 10pt; color: #555; line-height: 1.6; border-left: 3px solid #6fa83a; padding-left: 4mm; }
+.cover .toc { margin-top: 12mm; font-size: 10pt; line-height: 1.9; }
+.cover .toc b { display: inline-block; width: 12mm; color: #6fa83a; }
+.sec-title { font-size: 17pt; font-weight: 800; margin-bottom: 1mm; }
+.sec-sub { color: #666; font-size: 9pt; margin-bottom: 6mm; }
+.box { background: #f5f6f3; border-radius: 3mm; padding: 5mm 6mm; margin-bottom: 5mm; }
+.box h3 { font-size: 11pt; font-weight: 700; margin-bottom: 2.5mm; }
+.box p { margin: 0 0 1.5mm; line-height: 1.5; }
+.steps { display: flex; gap: 3mm; margin-top: 3mm; }
+.step { flex: 1; background: #fff; border-radius: 2mm; padding: 3mm; font-size: 8.5pt; line-height: 1.4; }
+.step b { display: block; color: #6fa83a; font-size: 14pt; font-weight: 800; }
+.two { display: flex; gap: 5mm; }
+.two > .box { flex: 1; }
+.sws { display: flex; gap: 3mm; }
+.sw { margin: 0; flex: 1; }
+.sw img { width: 100%; height: 14mm; object-fit: cover; border-radius: 1.5mm; display: block; border: 1px solid #ddd; }
+.sw figcaption { font-size: 8.5pt; margin-top: 1.5mm; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; }
+.extras td { padding: 1.6mm 0; border-bottom: 1px solid #e3e3e3; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+ol.carac { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 6mm; }
+ol.carac li { break-inside: avoid; margin-bottom: 2mm; line-height: 1.4; font-size: 9pt; display: flex; gap: 2mm; }
+ol.carac .n { flex: 0 0 5mm; height: 5mm; border-radius: 50%; background: #8c9396; color: #fff; font-size: 7.5pt; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.plist th { background: #333; color: #fff; font-size: 8.5pt; font-weight: 700; padding: 2mm 2mm; text-align: right; }
+.plist th.l { text-align: left; }
+.plist td { padding: 1.35mm 2mm; border-bottom: 1px solid #e6e6e6; font-size: 9pt; }
+.plist tr:nth-child(even) td { background: #f7f7f5; }
+.plist td.w { font-weight: 800; text-align: left; }
+.plist td.rng { color: #777; font-size: 8pt; }
+.plist td.nm { font-weight: 600; }
+.plist td.na { text-align: right; color: #bbb; }
+.pnote { font-size: 8.5pt; color: #555; line-height: 1.55; margin-top: 4mm; }
+.mhead { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #333; padding-bottom: 3mm; margin-bottom: 5mm; }
+.mhead .kicker { font-size: 9pt; color: #6fa83a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.mhead h2 { font-size: 22pt; font-weight: 800; }
+.medida { text-align: center; line-height: 1; }
+.medida span { display: block; font-size: 9pt; font-weight: 700; }
+.medida b { display: block; font-size: 26pt; font-weight: 800; margin: 0.5mm 0; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; flex: 1; }
+.grid2 { display: grid; grid-template-rows: 1fr 1fr; gap: 6mm; flex: 1; }
+.card { border: 1px solid #e2e2e2; border-radius: 3mm; padding: 4mm; display: flex; flex-direction: column; min-height: 0; }
+.card-head { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 3mm; }
+.letter { width: 9mm; height: 9mm; border-radius: 50%; background: #333; color: #fff; font-weight: 800; font-size: 13pt; display: inline-flex; align-items: center; justify-content: center; }
+.dlabel { font-size: 9pt; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+.price { margin-left: auto; font-size: 15pt; font-weight: 800; }
+.main { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.main img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.grid4 .main { height: 72mm; flex: none; }
+.grid2 .main { height: 62mm; flex: none; }
+.thumbs { display: flex; gap: 2mm; margin-top: 3mm; }
+.th { margin: 0; flex: 1; text-align: center; min-width: 0; }
+.th img { width: 100%; height: 14mm; object-fit: contain; background: #fafafa; }
+.grid2 .th img { height: 17mm; }
+.th figcaption { font-size: 7pt; color: #666; margin-top: 0.8mm; }
+.pfoot { position: absolute; bottom: 6mm; left: 14mm; right: 14mm; font-size: 7pt; color: #999; text-align: center; }
+.about p { line-height: 1.6; margin: 0 0 2mm; }
+.contact td { padding: 2.2mm 0; border-bottom: 1px solid #e3e3e3; vertical-align: top; }
+.contact td:first-child { width: 38mm; font-weight: 700; }
+.bar, .aviso-print { display: none; }
+@media screen {
+  body { background: #e4e4e1; padding-top: 74px; }
+  .bar { display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: #2f2f2f; color: #fff; padding: 12px 20px; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+  .bar .estado { font-size: 13px; line-height: 1.45; max-width: 640px; }
+  .bar .estado b { color: #a9d77f; }
+  .bar.error { background: #8a1f1f; }
+  .bar.error .estado b { color: #fff; }
+  .bar button { font: 700 15px Montserrat, Arial, sans-serif; background: #6fa83a; color: #fff; border: 0; border-radius: 8px; padding: 12px 22px; cursor: pointer; }
+  .bar button:disabled { background: #777; cursor: not-allowed; }
+  .pages { zoom: var(--z, 1); }
+  .page { margin: 0 auto 10mm; box-shadow: 0 2px 12px rgba(0,0,0,.18); }
+}
+@media print {
+  body.sin-datos .pages { display: none; }
+  body.sin-datos .aviso-print { display: block; padding: 30mm 20mm; font-size: 18pt; font-weight: 700; }
+}
+</style></head><body>
+
+<div class="bar" id="bar">
+  <div class="estado" id="estado">Leyendo los precios de la planilla…</div>
+  <button id="descargar" disabled>Descargar PDF</button>
+</div>
+<div class="aviso-print">No se pudieron leer los precios de la planilla. Este catálogo no se imprime con precios viejos: volvé a abrir la página y probá de nuevo.</div>
+
+<main class="pages">
+<section class="page cover">
+  <img class="logo" src="img/logo_schinner_2025.png" alt="Schinner">
+  <h1>Catálogo y lista<br>de precios <span class="green">de placares</span></h1>
+  <div class="sub">Modelos, diseños, colores, precios, espejos y condiciones.</div>
+  <div class="facts">
+    <div class="fact"><b>31</b><span>anchos, de 120 a 429 cm</span></div>
+    <div class="fact"><b>82</b><span>diseños de interior</span></div>
+    <div class="fact"><b>4</b><span>colores, mismo precio</span></div>
+  </div>
+  <div class="note">Lista de precios vigente al <b class="fecha-larga">martes 6 de octubre de 2026</b>.</div>
+  <div class="toc">
+    <div><b>p. 2</b>Cómo se compra, medidas, colores, espejos y características</div>
+    <div><b>p. 3</b>Lista de precios completa (los 31 anchos)</div>
+    <div><b>p. 4</b>Catálogo: cada modelo con sus diseños y colores</div>
+    <div><b>p. 35</b>Nosotros y contacto</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="sec-title">Cómo funciona</div>
+  <div class="sec-sub">La compra, las medidas y el producto.</div>
+  <div class="box">
+    <h3>Cómo se compra</h3>
+    <p><b>No se abona nada al hacer el pedido: el total se paga contra entrega.</b></p>
+    <p>Envío y armado gratis hasta <b><span class="kmv" data-k="libres">50</span> km desde Rosario</b>. Más lejos, <b><span class="kmv" data-k="precio">$ 1.440</span> por kilómetro</b> extra.</p>
+    <div class="steps">
+      <div class="step"><b>1</b>Elegir medida, diseño y color</div>
+      <div class="step"><b>2</b>Completar el formulario</div>
+      <div class="step"><b>3</b>Asignarse la fecha de instalación</div>
+      <div class="step"><b>4</b>Confirmar la compra</div>
+      <div class="step"><b>5</b>Schinner se comunica para la toma de medidas en obra</div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="box">
+      <h3>Medidas</h3>
+      <p>Cada modelo cubre <b>10 cm de ancho</b>: el «120» se vende de 120 a 129 cm, el «130» de 130 a 139, y así hasta el «420» (420 a 429 cm).</p>
+      <p>Dentro de ese rango el precio es el mismo. El instalador siempre mide antes.</p>
+      <p>Diseños: de 120 a 219 cm hay <b>4 (A, B, C, D)</b>; de 220 a 429 cm hay <b>2 (A y B)</b>.</p>
+    </div>
+    <div class="box">
+      <h3>Espejos y vidrios</h3>
+      <table class="extras"><tr><td>Espejo</td><td class='num'><span class='xv' data-x='espejo'>$ 448.360</span></td></tr><tr><td>Vidrio esmerilado</td><td class='num'><span class='xv' data-x='vidrio'>$ 476.140</span></td></tr><tr><td>Corte oriental</td><td class='num'><span class='xv' data-x='corte'>$ 169.820</span></td></tr></table>
+      <p style="margin-top:2.5mm;font-size:8pt;color:#666">Mismo precio en los 31 modelos.</p>
+    </div>
+  </div>
+  <div class="box">
+    <h3>Colores de puerta</h3>
+    <div class="sws"><figure class="sw"><img src="img/blanco.jpg" alt="Blanco"><figcaption>Blanco</figcaption></figure><figure class="sw"><img src="img/ceda_giorno.jpg" alt="Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="sw"><img src="img/gaudi.jpg" alt="Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="sw"><img src="img/teka_artico.jpg" alt="Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    <p style="margin-top:3mm;font-size:8.5pt;color:#555">El color cambia sólo las puertas y <b>no cambia el precio</b>.</p>
+  </div>
+  <div class="box">
+    <h3>Características del producto</h3>
+    <ol class="carac"><li><span class='n'>1</span><span><b>NO</b> se colocan terminaciones, tapajuntas, zócalos y molduras</span></li><li><span class='n'>2</span><span>Altura máxima: <b>235 cm</b></span></li><li><span class='n'>3</span><span>Profundidad exterior: <b>60 cm</b></span></li><li><span class='n'>4</span><span>Profundidad interior: <b>45 cm</b></span></li><li><span class='n'>5</span><span>Maderas FAPLAC <b>18 mm</b> aglomerado hidrófugo compacto</span></li><li><span class='n'>6</span><span>Fondos blancos de <b>3 mm</b></span></li><li><span class='n'>7</span><span>Cajoneras todas de <b>45 cm</b> de ancho</span></li><li><span class='n'>8</span><span>Pantaloneras metálicas capacidad <b>12 pantalones</b></span></li><li><span class='n'>9</span><span>Puertas corredizas, manijas aluminio anodizado y ruedas nylon</span></li><li><span class='n'>10</span><span>Tu instalador siempre pasará previamente a medir todo</span></li></ol>
+  </div>
+</section>
+
+<section class="page">
+  <div class="sec-title">Lista de precios</div>
+  <div class="sec-sub">Precio por ancho y por diseño, al <span class="fecha-larga">martes 6 de octubre de 2026</span>. El color no cambia el precio.</div>
+  <table class="plist">
+    <thead><tr><th class="l">Ancho</th><th class="l">Cubre (cm)</th><th class="l">Modelo</th><th>Diseño A</th><th>Diseño B</th><th>Diseño C</th><th>Diseño D</th></tr></thead>
+    <tbody><tr><td class='num w'>120</td><td class='rng'>120–129</td><td class='nm'>Zürich</td><td class='num'><span class="pv" data-p="120-0">$ 1.306.564</span></td><td class='num'><span class="pv" data-p="120-1">$ 1.392.996</span></td><td class='num'><span class="pv" data-p="120-2">$ 1.546.728</span></td><td class='num'><span class="pv" data-p="120-3">$ 1.643.970</span></td></tr><tr><td class='num w'>130</td><td class='rng'>130–139</td><td class='nm'>Bern</td><td class='num'><span class="pv" data-p="130-0">$ 1.386.825</span></td><td class='num'><span class="pv" data-p="130-1">$ 1.473.262</span></td><td class='num'><span class="pv" data-p="130-2">$ 1.626.995</span></td><td class='num'><span class="pv" data-p="130-3">$ 1.724.234</span></td></tr><tr><td class='num w'>140</td><td class='rng'>140–149</td><td class='nm'>Luzern</td><td class='num'><span class="pv" data-p="140-0">$ 1.453.968</span></td><td class='num'><span class="pv" data-p="140-1">$ 1.540.400</span></td><td class='num'><span class="pv" data-p="140-2">$ 1.694.132</span></td><td class='num'><span class="pv" data-p="140-3">$ 1.791.373</span></td></tr><tr><td class='num w'>150</td><td class='rng'>150–159</td><td class='nm'>Uri</td><td class='num'><span class="pv" data-p="150-0">$ 1.524.969</span></td><td class='num'><span class="pv" data-p="150-1">$ 1.611.402</span></td><td class='num'><span class="pv" data-p="150-2">$ 1.765.134</span></td><td class='num'><span class="pv" data-p="150-3">$ 1.862.373</span></td></tr><tr><td class='num w'>160</td><td class='rng'>160–169</td><td class='nm'>Schwytz</td><td class='num'><span class="pv" data-p="160-0">$ 1.589.022</span></td><td class='num'><span class="pv" data-p="160-1">$ 1.675.457</span></td><td class='num'><span class="pv" data-p="160-2">$ 1.829.189</span></td><td class='num'><span class="pv" data-p="160-3">$ 1.926.428</span></td></tr><tr><td class='num w'>170</td><td class='rng'>170–179</td><td class='nm'>Obwalden</td><td class='num'><span class="pv" data-p="170-0">$ 1.656.162</span></td><td class='num'><span class="pv" data-p="170-1">$ 1.742.599</span></td><td class='num'><span class="pv" data-p="170-2">$ 1.896.332</span></td><td class='num'><span class="pv" data-p="170-3">$ 1.993.573</span></td></tr><tr><td class='num w'>180</td><td class='rng'>180–189</td><td class='nm'>Nidwalden</td><td class='num'><span class="pv" data-p="180-0">$ 1.745.689</span></td><td class='num'><span class="pv" data-p="180-1">$ 1.832.123</span></td><td class='num'><span class="pv" data-p="180-2">$ 1.985.854</span></td><td class='num'><span class="pv" data-p="180-3">$ 2.083.093</span></td></tr><tr><td class='num w'>190</td><td class='rng'>190–199</td><td class='nm'>Craig</td><td class='num'><span class="pv" data-p="190-0">$ 1.842.158</span></td><td class='num'><span class="pv" data-p="190-1">$ 1.928.590</span></td><td class='num'><span class="pv" data-p="190-2">$ 2.082.322</span></td><td class='num'><span class="pv" data-p="190-3">$ 2.179.561</span></td></tr><tr><td class='num w'>200</td><td class='rng'>200–209</td><td class='nm'>Glarus</td><td class='num'><span class="pv" data-p="200-0">$ 1.894.633</span></td><td class='num'><span class="pv" data-p="200-1">$ 1.981.069</span></td><td class='num'><span class="pv" data-p="200-2">$ 2.134.801</span></td><td class='num'><span class="pv" data-p="200-3">$ 2.232.041</span></td></tr><tr><td class='num w'>210</td><td class='rng'>210–219</td><td class='nm'>Zug</td><td class='num'><span class="pv" data-p="210-0">$ 1.981.841</span></td><td class='num'><span class="pv" data-p="210-1">$ 2.068.273</span></td><td class='num'><span class="pv" data-p="210-2">$ 2.222.007</span></td><td class='num'><span class="pv" data-p="210-3">$ 2.319.246</span></td></tr><tr><td class='num w'>220</td><td class='rng'>220–229</td><td class='nm'>Fribourg</td><td class='num'><span class="pv" data-p="220-0">$ 2.098.373</span></td><td class='num'><span class="pv" data-p="220-1">$ 2.184.808</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>230</td><td class='rng'>230–239</td><td class='nm'>Solothurn</td><td class='num'><span class="pv" data-p="230-0">$ 2.231.114</span></td><td class='num'><span class="pv" data-p="230-1">$ 2.317.550</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>240</td><td class='rng'>240–249</td><td class='nm'>Basel-Stadt</td><td class='num'><span class="pv" data-p="240-0">$ 2.349.963</span></td><td class='num'><span class="pv" data-p="240-1">$ 2.436.397</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>250</td><td class='rng'>250–259</td><td class='nm'>Basel-Land</td><td class='num'><span class="pv" data-p="250-0">$ 2.475.758</span></td><td class='num'><span class="pv" data-p="250-1">$ 2.562.196</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>260</td><td class='rng'>260–269</td><td class='nm'>Schaffhausen</td><td class='num'><span class="pv" data-p="260-0">$ 2.596.147</span></td><td class='num'><span class="pv" data-p="260-1">$ 2.682.584</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>270</td><td class='rng'>270–279</td><td class='nm'>Appenzell Ausserrhoden</td><td class='num'><span class="pv" data-p="270-0">$ 2.710.370</span></td><td class='num'><span class="pv" data-p="270-1">$ 2.796.802</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>280</td><td class='rng'>280–289</td><td class='nm'>Appenzell Innerrhoden</td><td class='num'><span class="pv" data-p="280-0">$ 2.907.935</span></td><td class='num'><span class="pv" data-p="280-1">$ 3.291.492</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>290</td><td class='rng'>290–299</td><td class='nm'>Sainkt-Gallen</td><td class='num'><span class="pv" data-p="290-0">$ 2.985.881</span></td><td class='num'><span class="pv" data-p="290-1">$ 3.369.436</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>300</td><td class='rng'>300–309</td><td class='nm'>Graubunden</td><td class='num'><span class="pv" data-p="300-0">$ 3.049.936</span></td><td class='num'><span class="pv" data-p="300-1">$ 3.433.489</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>310</td><td class='rng'>310–319</td><td class='nm'>Argau</td><td class='num'><span class="pv" data-p="310-0">$ 3.107.045</span></td><td class='num'><span class="pv" data-p="310-1">$ 3.490.601</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>320</td><td class='rng'>320–329</td><td class='nm'>Thurgau</td><td class='num'><span class="pv" data-p="320-0">$ 3.178.045</span></td><td class='num'><span class="pv" data-p="320-1">$ 3.561.601</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>330</td><td class='rng'>330–339</td><td class='nm'>Ticino</td><td class='num'><span class="pv" data-p="330-0">$ 3.252.130</span></td><td class='num'><span class="pv" data-p="330-1">$ 3.635.689</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>340</td><td class='rng'>340–349</td><td class='nm'>Vaud</td><td class='num'><span class="pv" data-p="340-0">$ 3.312.328</span></td><td class='num'><span class="pv" data-p="340-1">$ 3.695.886</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>350</td><td class='rng'>350–359</td><td class='nm'>Valais</td><td class='num'><span class="pv" data-p="350-0">$ 3.394.905</span></td><td class='num'><span class="pv" data-p="350-1">$ 3.778.462</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>360</td><td class='rng'>360–369</td><td class='nm'>Neuchâtel</td><td class='num'><span class="pv" data-p="360-0">$ 3.491.375</span></td><td class='num'><span class="pv" data-p="360-1">$ 3.874.929</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>370</td><td class='rng'>370–379</td><td class='nm'>Genève</td><td class='num'><span class="pv" data-p="370-0">$ 3.580.894</span></td><td class='num'><span class="pv" data-p="370-1">$ 3.964.454</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>380</td><td class='rng'>380–389</td><td class='nm'>Jura</td><td class='num'><span class="pv" data-p="380-0">$ 3.684.309</span></td><td class='num'><span class="pv" data-p="380-1">$ 4.067.864</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>390</td><td class='rng'>390–399</td><td class='nm'>Italia</td><td class='num'><span class="pv" data-p="390-0">$ 3.742.191</span></td><td class='num'><span class="pv" data-p="390-1">$ 4.125.746</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>400</td><td class='rng'>400–409</td><td class='nm'>Francia</td><td class='num'><span class="pv" data-p="400-0">$ 3.789.265</span></td><td class='num'><span class="pv" data-p="400-1">$ 4.172.824</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>410</td><td class='rng'>410–419</td><td class='nm'>Alemania</td><td class='num'><span class="pv" data-p="410-0">$ 3.869.526</span></td><td class='num'><span class="pv" data-p="410-1">$ 4.253.086</span></td><td class='na'>—</td><td class='na'>—</td></tr><tr><td class='num w'>420</td><td class='rng'>420–429</td><td class='nm'>Suiza</td><td class='num'><span class="pv" data-p="420-0">$ 3.963.682</span></td><td class='num'><span class="pv" data-p="420-1">$ 4.347.237</span></td><td class='na'>—</td><td class='na'>—</td></tr></tbody>
+  </table>
+  <div class="pnote"><b>Cómo se escalonan los diseños.</b> En cada ancho, el diseño A es el más barato y los otros le suman siempre casi lo mismo: el B, unos <b><span class="dif" data-d="B1">$ 86.435</span></b> más hasta 279 cm y unos <b><span class="dif" data-d="B2">$ 383.556</span></b> más desde 280 cm; el C, unos <b><span class="dif" data-d="C">$ 240.167</span></b> más; el D, unos <b><span class="dif" data-d="D">$ 337.407</span></b> más.<br>Espejo <span class="xv" data-x="espejo">$ 448.360</span> · Vidrio esmerilado <span class="xv" data-x="vidrio">$ 476.140</span> · Corte oriental <span class="xv" data-x="corte">$ 169.820</span>.</div>
+</section>
+
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 120 a 129 cm</div><h2>Zürich</h2></div>
+      <div class="medida"><span>Medida</span><b>120</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="120-0">$ 1.306.564</span></span></div>
+      <div class="main"><img src="img/4foto101g0.jpg" alt="Zürich, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/4foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/4foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/4foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/4foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="120-1">$ 1.392.996</span></span></div>
+      <div class="main"><img src="img/4foto201g0.jpg" alt="Zürich, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/4foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/4foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/4foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/4foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="120-2">$ 1.546.728</span></span></div>
+      <div class="main"><img src="img/4foto301g0.jpg" alt="Zürich, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/4foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/4foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/4foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/4foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="120-3">$ 1.643.970</span></span></div>
+      <div class="main"><img src="img/4foto401g0.jpg" alt="Zürich, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/4foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/4foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/4foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/4foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 130 a 139 cm</div><h2>Bern</h2></div>
+      <div class="medida"><span>Medida</span><b>130</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="130-0">$ 1.386.825</span></span></div>
+      <div class="main"><img src="img/5foto101g0.jpg" alt="Bern, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/5foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/5foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/5foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/5foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="130-1">$ 1.473.262</span></span></div>
+      <div class="main"><img src="img/5foto201g0.jpg" alt="Bern, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/5foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/5foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/5foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/5foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="130-2">$ 1.626.995</span></span></div>
+      <div class="main"><img src="img/5foto301g0.jpg" alt="Bern, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/5foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/5foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/5foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/5foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="130-3">$ 1.724.234</span></span></div>
+      <div class="main"><img src="img/5foto401g0.jpg" alt="Bern, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/5foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/5foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/5foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/5foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 140 a 149 cm</div><h2>Luzern</h2></div>
+      <div class="medida"><span>Medida</span><b>140</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="140-0">$ 1.453.968</span></span></div>
+      <div class="main"><img src="img/6foto101g0.jpg" alt="Luzern, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/6foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/6foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/6foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/6foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="140-1">$ 1.540.400</span></span></div>
+      <div class="main"><img src="img/6foto201g0.jpg" alt="Luzern, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/6foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/6foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/6foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/6foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="140-2">$ 1.694.132</span></span></div>
+      <div class="main"><img src="img/6foto301g0.jpg" alt="Luzern, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/6foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/6foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/6foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/6foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="140-3">$ 1.791.373</span></span></div>
+      <div class="main"><img src="img/6foto401g0.jpg" alt="Luzern, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/6foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/6foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/6foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/6foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 150 a 159 cm</div><h2>Uri</h2></div>
+      <div class="medida"><span>Medida</span><b>150</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="150-0">$ 1.524.969</span></span></div>
+      <div class="main"><img src="img/7foto101g0.jpg" alt="Uri, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/7foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/7foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/7foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/7foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="150-1">$ 1.611.402</span></span></div>
+      <div class="main"><img src="img/7foto201g0.jpg" alt="Uri, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/7foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/7foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/7foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/7foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="150-2">$ 1.765.134</span></span></div>
+      <div class="main"><img src="img/7foto301g0.jpg" alt="Uri, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/7foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/7foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/7foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/7foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="150-3">$ 1.862.373</span></span></div>
+      <div class="main"><img src="img/7foto401g0.jpg" alt="Uri, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/7foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/7foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/7foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/7foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 160 a 169 cm</div><h2>Schwytz</h2></div>
+      <div class="medida"><span>Medida</span><b>160</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="160-0">$ 1.589.022</span></span></div>
+      <div class="main"><img src="img/8foto101g0.jpg" alt="Schwytz, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/8foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/8foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/8foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/8foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="160-1">$ 1.675.457</span></span></div>
+      <div class="main"><img src="img/8foto201g0.jpg" alt="Schwytz, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/8foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/8foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/8foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/8foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="160-2">$ 1.829.189</span></span></div>
+      <div class="main"><img src="img/8foto301g0.jpg" alt="Schwytz, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/8foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/8foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/8foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/8foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="160-3">$ 1.926.428</span></span></div>
+      <div class="main"><img src="img/8foto401g0.jpg" alt="Schwytz, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/8foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/8foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/8foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/8foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 170 a 179 cm</div><h2>Obwalden</h2></div>
+      <div class="medida"><span>Medida</span><b>170</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="170-0">$ 1.656.162</span></span></div>
+      <div class="main"><img src="img/35foto101g0.jpg" alt="Obwalden, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/35foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/35foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/35foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/35foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="170-1">$ 1.742.599</span></span></div>
+      <div class="main"><img src="img/35foto201g0.jpg" alt="Obwalden, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/35foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/35foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/35foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/35foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="170-2">$ 1.896.332</span></span></div>
+      <div class="main"><img src="img/35foto301g0.jpg" alt="Obwalden, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/35foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/35foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/35foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/35foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="170-3">$ 1.993.573</span></span></div>
+      <div class="main"><img src="img/35foto401g0.jpg" alt="Obwalden, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/35foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/35foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/35foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/35foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 180 a 189 cm</div><h2>Nidwalden</h2></div>
+      <div class="medida"><span>Medida</span><b>180</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="180-0">$ 1.745.689</span></span></div>
+      <div class="main"><img src="img/36foto101g0.jpg" alt="Nidwalden, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/36foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/36foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/36foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/36foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="180-1">$ 1.832.123</span></span></div>
+      <div class="main"><img src="img/36foto201g0.jpg" alt="Nidwalden, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/36foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/36foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/36foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/36foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="180-2">$ 1.985.854</span></span></div>
+      <div class="main"><img src="img/36foto301g0.jpg" alt="Nidwalden, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/36foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/36foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/36foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/36foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="180-3">$ 2.083.093</span></span></div>
+      <div class="main"><img src="img/36foto401g0.jpg" alt="Nidwalden, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/36foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/36foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/36foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/36foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 190 a 199 cm</div><h2>Craig</h2></div>
+      <div class="medida"><span>Medida</span><b>190</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="190-0">$ 1.842.158</span></span></div>
+      <div class="main"><img src="img/37foto101g0.jpg" alt="Craig, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/37foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/37foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/37foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/37foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="190-1">$ 1.928.590</span></span></div>
+      <div class="main"><img src="img/37foto201g0.jpg" alt="Craig, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/37foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/37foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/37foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/37foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="190-2">$ 2.082.322</span></span></div>
+      <div class="main"><img src="img/37foto301g0.jpg" alt="Craig, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/37foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/37foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/37foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/37foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="190-3">$ 2.179.561</span></span></div>
+      <div class="main"><img src="img/37foto401g0.jpg" alt="Craig, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/37foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/37foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/37foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/37foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 200 a 209 cm</div><h2>Glarus</h2></div>
+      <div class="medida"><span>Medida</span><b>200</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="200-0">$ 1.894.633</span></span></div>
+      <div class="main"><img src="img/12foto101g0.jpg" alt="Glarus, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/12foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/12foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/12foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/12foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="200-1">$ 1.981.069</span></span></div>
+      <div class="main"><img src="img/12foto201g0.jpg" alt="Glarus, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/12foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/12foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/12foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/12foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="200-2">$ 2.134.801</span></span></div>
+      <div class="main"><img src="img/12foto301g0.jpg" alt="Glarus, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/12foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/12foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/12foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/12foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="200-3">$ 2.232.041</span></span></div>
+      <div class="main"><img src="img/12foto401g0.jpg" alt="Glarus, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/12foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/12foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/12foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/12foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 210 a 219 cm</div><h2>Zug</h2></div>
+      <div class="medida"><span>Medida</span><b>210</b><span>de ancho</span></div>
+    </header>
+    <div class="grid4">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="210-0">$ 1.981.841</span></span></div>
+      <div class="main"><img src="img/38foto101g0.jpg" alt="Zug, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/38foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/38foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/38foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/38foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="210-1">$ 2.068.273</span></span></div>
+      <div class="main"><img src="img/38foto201g0.jpg" alt="Zug, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/38foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/38foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/38foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/38foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">C</span><span class="dlabel">Diseño C</span><span class="price"><span class="pv" data-p="210-2">$ 2.222.007</span></span></div>
+      <div class="main"><img src="img/38foto301g0.jpg" alt="Zug, diseño C"></div>
+      <div class="thumbs"><figure class="th"><img src="th/38foto301g0.jpg" alt="Diseño C en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/38foto302g0.jpg" alt="Diseño C en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/38foto303g0.jpg" alt="Diseño C en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/38foto304g0.jpg" alt="Diseño C en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">D</span><span class="dlabel">Diseño D</span><span class="price"><span class="pv" data-p="210-3">$ 2.319.246</span></span></div>
+      <div class="main"><img src="img/38foto401g0.jpg" alt="Zug, diseño D"></div>
+      <div class="thumbs"><figure class="th"><img src="th/38foto401g0.jpg" alt="Diseño D en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/38foto402g0.jpg" alt="Diseño D en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/38foto403g0.jpg" alt="Diseño D en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/38foto404g0.jpg" alt="Diseño D en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 220 a 229 cm</div><h2>Fribourg</h2></div>
+      <div class="medida"><span>Medida</span><b>220</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="220-0">$ 2.098.373</span></span></div>
+      <div class="main"><img src="img/39foto101g0.jpg" alt="Fribourg, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/39foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/39foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/39foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/39foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="220-1">$ 2.184.808</span></span></div>
+      <div class="main"><img src="img/39foto201g0.jpg" alt="Fribourg, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/39foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/39foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/39foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/39foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 230 a 239 cm</div><h2>Solothurn</h2></div>
+      <div class="medida"><span>Medida</span><b>230</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="230-0">$ 2.231.114</span></span></div>
+      <div class="main"><img src="img/40foto101g0.jpg" alt="Solothurn, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/40foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/40foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/40foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/40foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="230-1">$ 2.317.550</span></span></div>
+      <div class="main"><img src="img/40foto201g0.jpg" alt="Solothurn, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/40foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/40foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/40foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/40foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 240 a 249 cm</div><h2>Basel-Stadt</h2></div>
+      <div class="medida"><span>Medida</span><b>240</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="240-0">$ 2.349.963</span></span></div>
+      <div class="main"><img src="img/41foto101g0.jpg" alt="Basel-Stadt, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/41foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/41foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/41foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/41foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="240-1">$ 2.436.397</span></span></div>
+      <div class="main"><img src="img/41foto201g0.jpg" alt="Basel-Stadt, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/41foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/41foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/41foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/41foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 250 a 259 cm</div><h2>Basel-Land</h2></div>
+      <div class="medida"><span>Medida</span><b>250</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="250-0">$ 2.475.758</span></span></div>
+      <div class="main"><img src="img/42foto101g0.jpg" alt="Basel-Land, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/42foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/42foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/42foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/42foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="250-1">$ 2.562.196</span></span></div>
+      <div class="main"><img src="img/42foto201g0.jpg" alt="Basel-Land, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/42foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/42foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/42foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/42foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 260 a 269 cm</div><h2>Schaffhausen</h2></div>
+      <div class="medida"><span>Medida</span><b>260</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="260-0">$ 2.596.147</span></span></div>
+      <div class="main"><img src="img/43foto101g0.jpg" alt="Schaffhausen, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/43foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/43foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/43foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/43foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="260-1">$ 2.682.584</span></span></div>
+      <div class="main"><img src="img/43foto201g0.jpg" alt="Schaffhausen, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/43foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/43foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/43foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/43foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 270 a 279 cm</div><h2>Appenzell Ausserrhoden</h2></div>
+      <div class="medida"><span>Medida</span><b>270</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="270-0">$ 2.710.370</span></span></div>
+      <div class="main"><img src="img/44foto101g0.jpg" alt="Appenzell Ausserrhoden, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/44foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/44foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/44foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/44foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="270-1">$ 2.796.802</span></span></div>
+      <div class="main"><img src="img/44foto201g0.jpg" alt="Appenzell Ausserrhoden, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/44foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/44foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/44foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/44foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 280 a 289 cm</div><h2>Appenzell Innerrhoden</h2></div>
+      <div class="medida"><span>Medida</span><b>280</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="280-0">$ 2.907.935</span></span></div>
+      <div class="main"><img src="img/58foto101g0.jpg" alt="Appenzell Innerrhoden, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/58foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/58foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/58foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/58foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="280-1">$ 3.291.492</span></span></div>
+      <div class="main"><img src="img/58foto201g0.jpg" alt="Appenzell Innerrhoden, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/58foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/58foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/58foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/58foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 290 a 299 cm</div><h2>Sainkt-Gallen</h2></div>
+      <div class="medida"><span>Medida</span><b>290</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="290-0">$ 2.985.881</span></span></div>
+      <div class="main"><img src="img/59foto101g0.jpg" alt="Sainkt-Gallen, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/59foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/59foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/59foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/59foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="290-1">$ 3.369.436</span></span></div>
+      <div class="main"><img src="img/59foto201g0.jpg" alt="Sainkt-Gallen, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/59foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/59foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/59foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/59foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 300 a 309 cm</div><h2>Graubunden</h2></div>
+      <div class="medida"><span>Medida</span><b>300</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="300-0">$ 3.049.936</span></span></div>
+      <div class="main"><img src="img/45foto101g0.jpg" alt="Graubunden, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/45foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/45foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/45foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/45foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="300-1">$ 3.433.489</span></span></div>
+      <div class="main"><img src="img/45foto201g0.jpg" alt="Graubunden, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/45foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/45foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/45foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/45foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 310 a 319 cm</div><h2>Argau</h2></div>
+      <div class="medida"><span>Medida</span><b>310</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="310-0">$ 3.107.045</span></span></div>
+      <div class="main"><img src="img/46foto101g0.jpg" alt="Argau, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/46foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/46foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/46foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/46foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="310-1">$ 3.490.601</span></span></div>
+      <div class="main"><img src="img/46foto201g0.jpg" alt="Argau, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/46foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/46foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/46foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/46foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 320 a 329 cm</div><h2>Thurgau</h2></div>
+      <div class="medida"><span>Medida</span><b>320</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="320-0">$ 3.178.045</span></span></div>
+      <div class="main"><img src="img/47foto101g0.jpg" alt="Thurgau, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/47foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/47foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/47foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/47foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="320-1">$ 3.561.601</span></span></div>
+      <div class="main"><img src="img/47foto201g0.jpg" alt="Thurgau, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/47foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/47foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/47foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/47foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 330 a 339 cm</div><h2>Ticino</h2></div>
+      <div class="medida"><span>Medida</span><b>330</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="330-0">$ 3.252.130</span></span></div>
+      <div class="main"><img src="img/48foto101g0.jpg" alt="Ticino, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/48foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/48foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/48foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/48foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="330-1">$ 3.635.689</span></span></div>
+      <div class="main"><img src="img/48foto201g0.jpg" alt="Ticino, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/48foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/48foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/48foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/48foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 340 a 349 cm</div><h2>Vaud</h2></div>
+      <div class="medida"><span>Medida</span><b>340</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="340-0">$ 3.312.328</span></span></div>
+      <div class="main"><img src="img/49foto101g0.jpg" alt="Vaud, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/49foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/49foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/49foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/49foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="340-1">$ 3.695.886</span></span></div>
+      <div class="main"><img src="img/49foto201g0.jpg" alt="Vaud, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/49foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/49foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/49foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/49foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 350 a 359 cm</div><h2>Valais</h2></div>
+      <div class="medida"><span>Medida</span><b>350</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="350-0">$ 3.394.905</span></span></div>
+      <div class="main"><img src="img/50foto101g0.jpg" alt="Valais, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/50foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/50foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/50foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/50foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="350-1">$ 3.778.462</span></span></div>
+      <div class="main"><img src="img/50foto201g0.jpg" alt="Valais, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/50foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/50foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/50foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/50foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 360 a 369 cm</div><h2>Neuchâtel</h2></div>
+      <div class="medida"><span>Medida</span><b>360</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="360-0">$ 3.491.375</span></span></div>
+      <div class="main"><img src="img/51foto101g0.jpg" alt="Neuchâtel, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/51foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/51foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/51foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/51foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="360-1">$ 3.874.929</span></span></div>
+      <div class="main"><img src="img/51foto201g0.jpg" alt="Neuchâtel, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/51foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/51foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/51foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/51foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 370 a 379 cm</div><h2>Genève</h2></div>
+      <div class="medida"><span>Medida</span><b>370</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="370-0">$ 3.580.894</span></span></div>
+      <div class="main"><img src="img/52foto101g0.jpg" alt="Genève, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/52foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/52foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/52foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/52foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="370-1">$ 3.964.454</span></span></div>
+      <div class="main"><img src="img/52foto201g0.jpg" alt="Genève, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/52foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/52foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/52foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/52foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 380 a 389 cm</div><h2>Jura</h2></div>
+      <div class="medida"><span>Medida</span><b>380</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="380-0">$ 3.684.309</span></span></div>
+      <div class="main"><img src="img/53foto101g0.jpg" alt="Jura, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/53foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/53foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/53foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/53foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="380-1">$ 4.067.864</span></span></div>
+      <div class="main"><img src="img/53foto201g0.jpg" alt="Jura, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/53foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/53foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/53foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/53foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 390 a 399 cm</div><h2>Italia</h2></div>
+      <div class="medida"><span>Medida</span><b>390</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="390-0">$ 3.742.191</span></span></div>
+      <div class="main"><img src="img/54foto101g0.jpg" alt="Italia, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/54foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/54foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/54foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/54foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="390-1">$ 4.125.746</span></span></div>
+      <div class="main"><img src="img/54foto201g0.jpg" alt="Italia, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/54foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/54foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/54foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/54foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 400 a 409 cm</div><h2>Francia</h2></div>
+      <div class="medida"><span>Medida</span><b>400</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="400-0">$ 3.789.265</span></span></div>
+      <div class="main"><img src="img/55foto101g0.jpg" alt="Francia, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/55foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/55foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/55foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/55foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="400-1">$ 4.172.824</span></span></div>
+      <div class="main"><img src="img/55foto201g0.jpg" alt="Francia, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/55foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/55foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/55foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/55foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 410 a 419 cm</div><h2>Alemania</h2></div>
+      <div class="medida"><span>Medida</span><b>410</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="410-0">$ 3.869.526</span></span></div>
+      <div class="main"><img src="img/56foto101g0.jpg" alt="Alemania, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/56foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/56foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/56foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/56foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="410-1">$ 4.253.086</span></span></div>
+      <div class="main"><img src="img/56foto201g0.jpg" alt="Alemania, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/56foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/56foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/56foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/56foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+  <section class="page model">
+    <header class="mhead">
+      <div><div class="kicker">Ancho 420 a 429 cm</div><h2>Suiza</h2></div>
+      <div class="medida"><span>Medida</span><b>420</b><span>de ancho</span></div>
+    </header>
+    <div class="grid2">
+    <div class="card">
+      <div class="card-head"><span class="letter">A</span><span class="dlabel">Diseño A</span><span class="price"><span class="pv" data-p="420-0">$ 3.963.682</span></span></div>
+      <div class="main"><img src="img/57foto101g0.jpg" alt="Suiza, diseño A"></div>
+      <div class="thumbs"><figure class="th"><img src="th/57foto101g0.jpg" alt="Diseño A en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/57foto102g0.jpg" alt="Diseño A en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/57foto103g0.jpg" alt="Diseño A en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/57foto104g0.jpg" alt="Diseño A en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="letter">B</span><span class="dlabel">Diseño B</span><span class="price"><span class="pv" data-p="420-1">$ 4.347.237</span></span></div>
+      <div class="main"><img src="img/57foto201g0.jpg" alt="Suiza, diseño B"></div>
+      <div class="thumbs"><figure class="th"><img src="th/57foto201g0.jpg" alt="Diseño B en Blanco"><figcaption>Blanco</figcaption></figure><figure class="th"><img src="th/57foto202g0.jpg" alt="Diseño B en Ceda Giorno"><figcaption>Ceda Giorno</figcaption></figure><figure class="th"><img src="th/57foto203g0.jpg" alt="Diseño B en Gaudí"><figcaption>Gaudí</figcaption></figure><figure class="th"><img src="th/57foto204g0.jpg" alt="Diseño B en Teka Ártico"><figcaption>Teka Ártico</figcaption></figure></div>
+    </div></div>
+    <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span> · el color no cambia el precio</footer>
+  </section>
+
+<section class="page about">
+  <div class="sec-title">Nosotros</div>
+  <div class="sec-sub">Placares y vestidores a medida desde 2008.</div>
+  <div class="box">
+    <p>Schinner nació en <b>Rosario a fines de 2008</b> y desde entonces fabrica e instala placares y vestidores a medida.</p>
+    <p>Tiene una <b>planta de 850 m² en Soldini</b> (provincia de Santa Fe) con maquinaria de última generación, y un <b>showroom</b> con asesoramiento profesional.</p>
+    <p>Los muebles se hacen en <b>melamina de 18 mm</b>, con estructuras ensambladas con herrajes de alta gama que forman un cuerpo único, para evitar que se flexione. Los interiores son modulares: la distribución se puede cambiar de forma rápida y sencilla.</p>
+    <p>La idea de la empresa: fabricar en Argentina el mueble europeo de última generación, con la misma tecnología y materiales, mano de obra regional y diseño a medida, para llegar a mejor precio. Su crecimiento se apoya en el diseño a medida, la calidad de los materiales, el cumplimiento y la atención posventa.</p>
+  </div>
+  <div class="sec-title" style="margin-top:6mm">Contacto y sucursales</div>
+  <div class="sec-sub">Escribinos o visitanos.</div>
+  <table class="contact">
+    <tr><td>Teléfono y WhatsApp</td><td>+54 341 665-3712</td></tr>
+    <tr><td>Soldini</td><td>Honduras 278, Soldini, Santa Fe, Argentina</td></tr>
+    <tr><td>Funes</td><td>Córdoba 972, Funes, Santa Fe, Argentina</td></tr>
+  </table>
+  <footer class="pfoot">Placares Schinner · precios vigentes al <span class="fecha-corta">6/10/2026</span></footer>
+</section>
+</main>
+
+<script>
+const CSV_URL = "https://script.google.com/macros/s/AKfycbxtcTe-bP5yPd_go3ScIDdP2gsU2fpbT4tXAlH5V19zi4szCy8FommNgXAH38WBqjRs/exec";
+const MODELOS = [{"w": 120, "n": 4}, {"w": 130, "n": 4}, {"w": 140, "n": 4}, {"w": 150, "n": 4}, {"w": 160, "n": 4}, {"w": 170, "n": 4}, {"w": 180, "n": 4}, {"w": 190, "n": 4}, {"w": 200, "n": 4}, {"w": 210, "n": 4}, {"w": 220, "n": 2}, {"w": 230, "n": 2}, {"w": 240, "n": 2}, {"w": 250, "n": 2}, {"w": 260, "n": 2}, {"w": 270, "n": 2}, {"w": 280, "n": 2}, {"w": 290, "n": 2}, {"w": 300, "n": 2}, {"w": 310, "n": 2}, {"w": 320, "n": 2}, {"w": 330, "n": 2}, {"w": 340, "n": 2}, {"w": 350, "n": 2}, {"w": 360, "n": 2}, {"w": 370, "n": 2}, {"w": 380, "n": 2}, {"w": 390, "n": 2}, {"w": 400, "n": 2}, {"w": 410, "n": 2}, {"w": 420, "n": 2}];
+
+function plata(n) { return "$ " + Math.round(n).toLocaleString("es-AR"); }
+function numero(s) { const d = String(s == null ? "" : s).replace(/[^0-9]/g, ""); return d ? parseInt(d, 10) : null; }
+
+function parseCSV(t) {
+  const primera = t.split("\n")[0];
+  const sep = (primera.match(/;/g) || []).length > (primera.match(/,/g) || []).length ? ";" : ",";
+  const filas = []; let fila = [], campo = "", comillas = false;
+  for (let i = 0; i < t.length; i++) {
+    const c = t[i];
+    if (comillas) {
+      if (c === '"' && t[i + 1] === '"') { campo += '"'; i++; }
+      else if (c === '"') comillas = false;
+      else campo += c;
+    } else if (c === '"') comillas = true;
+    else if (c === sep) { fila.push(campo); campo = ""; }
+    else if (c === "\n") { fila.push(campo); filas.push(fila); fila = []; campo = ""; }
+    else if (c !== "\r") campo += c;
+  }
+  if (campo !== "" || fila.length) { fila.push(campo); filas.push(fila); }
+  return filas;
+}
+
+function leerPlanilla(filas) {
+  const precios = {}, extras = {}, km = {};
+  let factor = null;
+  for (const f of filas) {
+    const a = (f[0] || "").trim(), etiqueta = (f[2] || "").trim().toLowerCase();
+    if (/^\d{3}$/.test(a)) precios[parseInt(a, 10)] = [3, 4, 5, 6].map(i => numero(f[i]));
+    if (etiqueta === "espejo") extras.espejo = numero(f[3]);
+    if (etiqueta === "vidrio esmerilado") extras.vidrio = numero(f[3]);
+    if (etiqueta === "corte oriental") extras.corte = numero(f[3]);
+    if (etiqueta.startsWith("kil") && etiqueta.includes("gratis")) km.libres = numero(f[3]);
+    if (etiqueta.startsWith("precio por kil")) km.precio = numero(f[3]);
+    if (a.startsWith("Precio de hoy") && f[9]) {
+      const s = String(f[9]).trim();
+      factor = parseFloat(s.includes(",") ? s.replace(/\./g, "").replace(",", ".") : s);
+    }
+  }
+  const faltan = [];
+  for (const m of MODELOS) {
+    const p = precios[m.w];
+    if (!p) { faltan.push(m.w + " cm"); continue; }
+    for (let i = 0; i < m.n; i++) if (!p[i]) faltan.push(m.w + " cm diseño " + "ABCD"[i]);
+  }
+  for (const k of ["espejo", "vidrio", "corte"]) if (!extras[k]) faltan.push(k);
+  if (!km.libres || !km.precio) faltan.push("envío por kilómetro");
+  if (faltan.length) throw new Error("faltan en la planilla: " + faltan.slice(0, 6).join(", ") + (faltan.length > 6 ? "…" : ""));
+  return { precios, extras, km, factor };
+}
+
+function promedio(xs) { return xs.reduce((s, x) => s + x, 0) / xs.length; }
+
+function aplicar(d) {
+  document.querySelectorAll("[data-p]").forEach(el => {
+    const [w, i] = el.dataset.p.split("-").map(Number);
+    el.textContent = plata(d.precios[w][i]);
+  });
+  document.querySelectorAll("[data-x]").forEach(el => { el.textContent = plata(d.extras[el.dataset.x]); });
+  document.querySelector('[data-k="libres"]').textContent = d.km.libres;
+  document.querySelector('[data-k="precio"]').textContent = plata(d.km.precio);
+  const dif = { B1: [], B2: [], C: [], D: [] };
+  for (const m of MODELOS) {
+    const p = d.precios[m.w];
+    if (m.n >= 2) (m.w <= 270 ? dif.B1 : dif.B2).push(p[1] - p[0]);
+    if (m.n >= 4) { dif.C.push(p[2] - p[0]); dif.D.push(p[3] - p[0]); }
+  }
+  document.querySelectorAll("[data-d]").forEach(el => { el.textContent = plata(promedio(dif[el.dataset.d])); });
+}
+
+function fechar() {
+  const hoy = new Date();
+  const larga = hoy.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  const corta = hoy.toLocaleDateString("es-AR");
+  document.querySelectorAll(".fecha-larga").forEach(el => el.textContent = larga);
+  document.querySelectorAll(".fecha-corta").forEach(el => el.textContent = corta);
+  document.title = "Schinner - catálogo y precios - " + corta.replace(/\//g, "-");
+  return hoy;
+}
+
+async function cargar() {
+  const bar = document.getElementById("bar"), estado = document.getElementById("estado"), boton = document.getElementById("descargar");
+  const url = new URLSearchParams(location.search).get("csv") || CSV_URL;
+  try {
+    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("la planilla respondió " + r.status);
+    const d = leerPlanilla(parseCSV(await r.text()));
+    aplicar(d);
+    const hoy = fechar();
+    const hora = hoy.toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" });
+    const aum = d.factor ? " · Aumento acumulado en la planilla: <b>" + ((d.factor - 1) * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 }) + " %</b>" : "";
+    estado.innerHTML = "<b>Precios leídos de la planilla a las " + hora + "</b>" + aum + "<br>Al apretar el botón, en «Destino» elegí <b>Guardar como PDF</b>.";
+    document.body.classList.remove("sin-datos");
+    boton.disabled = false;
+  } catch (e) {
+    document.body.classList.add("sin-datos");
+    bar.classList.add("error");
+    estado.innerHTML = "<b>No pude leer los precios de la planilla</b> (" + e.message + "). No descargues este PDF: los precios pueden estar viejos. Recargá la página en un rato.";
+    boton.disabled = true;
+  }
+}
+
+function ajustar() {
+  const ancho = document.documentElement.clientWidth;
+  const pagina = 210 * 96 / 25.4 + 24;
+  document.documentElement.style.setProperty("--z", Math.min(1, ancho / pagina));
+}
+
+document.getElementById("descargar").addEventListener("click", () => window.print());
+window.addEventListener("resize", ajustar);
+document.body.classList.add("sin-datos");
+ajustar();
+cargar();
+</script>
+</body></html>
